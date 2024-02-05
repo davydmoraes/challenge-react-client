@@ -8,18 +8,12 @@ import styles from './PanelContainer.module.css';
 export async function PanelContainer () {
   let result = await StorageStationService.getAll();
   let storageStations: IStorageStation[] = result;
-  
-  const receive = async (myName: string) => {
-        console.log("O amor");
-        result = await StorageStationService.getAll();
-        storageStations = result;
-    }
 
   return (
     <main>
      <div className={styles.panelWrapper}>
         {storageStations.map((storageStation: IStorageStation, index: number) => 
-        <Panel key={index} callback={receive} storageStation={storageStation}/>
+        <Panel key={index} storageStation={storageStation}/>
         )}
      </div>
     </main>

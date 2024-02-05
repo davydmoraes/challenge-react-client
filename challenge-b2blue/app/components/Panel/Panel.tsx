@@ -1,6 +1,5 @@
 'use client';
 import styles from './Panel.module.css';
-import { IStorageStation } from '@/app/models/IStorageStation';
 import { StorageStationService } from '@/app/services/api/storage-station/StorageStationService';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -12,9 +11,6 @@ export const Panel = (props: any) => {
 
 
     const confirmPercent = async () => {
-        if(props.callback){
-            props.callback('Sou eu')
-          }
         try {    
                 const newPercent = parseInt(newStorageValue);
     
@@ -47,18 +43,6 @@ export const Panel = (props: any) => {
         );
     }
 
-
-    /*const handleNumberChange = (value: any) => {
-        let updatedStorageStation = storageStation;
-        const newValue = value;
-        updatedStorageStation = {
-            ...updatedStorageStation,  
-            occupied_storage_percent: newValue,
-        }
-
-        setStorageStation(updatedStorageStation);
-    };*/
-
     const handleNumberChange = (value: any) => {
         let updatedValue = newStorageValue;
         const newValue = value;
@@ -68,6 +52,10 @@ export const Panel = (props: any) => {
         setNewStorageValue(updatedValue);
     }
 
+    const dynamicStyles = {
+       height: storageStation.occupied_storage_percent+'%',
+       background: storageStation.occupied_storage_percent >= 80 ? '#ff1010' : 'green'
+      };
 
   return (
     <div className={styles.wrapper} >
@@ -76,20 +64,21 @@ export const Panel = (props: any) => {
                 <div className={styles.storageStationContainer}>
                 <div className={styles.storageStation}>
                         {storageStation.was_pickup_requested && (<div className={styles.pickupWarning}>
-                            <div className="warningContent">
+                            <div>
                             A coleta para esta estação foi solicitada. Esta coleta já ocorreu?
                             </div>
                             <Button onClick={() => {confirmPickup(storageStation)}}
                                 className={styles.buttonStyle} variant="contained">Confirmar Coleta</Button> 
                         </div>)
                         }
-                        <span className='percentage'>
+                        <span className={styles.percentage} >
                             {storageStation.occupied_storage_percent}%
                         </span>
-                        </div> 
+                    <div style={dynamicStyles} className={styles.trashBinT}></div>
+                </div> 
                             <div className={styles.textfieldContainer}>
                             <TextField type='number' value={newStorageValue} onChange={(e) => handleNumberChange(e.target.value)} className={styles.textfield} id="filled-basic" label="Informe o volume ocupado em porcentagem." variant="filled" />
-                        </div> 
+                </div> 
                 </div>
             </div>
         </div>
