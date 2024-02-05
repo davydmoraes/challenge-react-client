@@ -1,17 +1,9 @@
-import Image from "next/image";
-import { IStorageStation } from "./models/IStorageStation";
-import { StorageStationService } from "./services/api/storage-station/StorageStationService";
-import Panel from "./components/Panel/Panel";
+import PanelContainer from "./components/PanelContainer/PanelContainer";
 
-export async function Home () {
-  const result = await StorageStationService.getAll();
-  const storageStations: IStorageStation[] = await result;
-
-  
+export async function Home () {  
   return (
-    <main>{storageStations.length > 0 &&
-      (<Panel storageStations={storageStations} />)
-      }
+    <main>
+      <PanelContainer />
     </main>
   );
 }

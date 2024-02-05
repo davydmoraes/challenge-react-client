@@ -4,11 +4,13 @@
     justify-content: center;
     flex-direction: column;
     height: 100%;
+    flex-grow: 1;
     background: linear-gradient(
         to bottom,
         #0e3a57,
         #1e7ab9
       )
+      
 }
 
 .stationGrid{
@@ -20,7 +22,7 @@
 }
 
 .stationContainer{
-    width: 30%;
+    width: 90%;
     height: 100%;
 }
 
