@@ -74,7 +74,7 @@ export const Panel = (props: any) => {
                         <span className={styles.percentage} >
                             {storageStation.occupied_storage_percent}%
                         </span>
-                    <div style={dynamicStyles} className={styles.trashBinT}></div>
+                    <div style={dynamicStyles} className={styles.occupiedPecent}></div>
                 </div> 
                             <div className={styles.textfieldContainer}>
                             <TextField type='number' value={newStorageValue} onChange={(e) => handleNumberChange(e.target.value)} className={styles.textfield} id="filled-basic" label="Informe o volume ocupado em porcentagem." variant="filled" />
