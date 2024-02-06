@@ -4,11 +4,13 @@
     justify-content: center;
     flex-direction: column;
     height: 100%;
+    flex-grow: 1;
     background: linear-gradient(
         to bottom,
         #0e3a57,
         #1e7ab9
       )
+      
 }
 
 .stationGrid{
@@ -20,7 +22,7 @@
 }
 
 .stationContainer{
-    width: 30%;
+    width: 90%;
     height: 100%;
 }
 
@@ -52,6 +54,7 @@
     padding-bottom: 3rem;
     background: #cbcbcb;
     position: relative;
+    overflow: hidden;
 }
 
 .textfieldContainer{
@@ -83,6 +86,7 @@
     -webkit-box-shadow: 5px 5px 6px 0px rgba(0,0,0,0.6);
     -moz-box-shadow: 5px 5px 6px 0px rgba(0,0,0,0.6);
     box-shadow: 5px 5px 6px 0px rgba(0,0,0,0.6);
+    z-index: 1;
 }
 
 .buttonStyle{
@@ -95,4 +99,15 @@
     background-color: #0f3b59;
     width: 20%;
     font-size: 0.9rem;
+}
+
+.trashBinT {
+    position:absolute;
+    background:#28ce96;
+    width:100%;
+    height:50%;
+    bottom:0;
+}
+.percentage{
+    z-index: 1;
 }
